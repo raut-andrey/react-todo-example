@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import classnames from 'classnames';
 
 import StyledFilterBlock from './FilterBlock.styles';
 import Button from '../Button';
@@ -11,6 +12,7 @@ const FilterBlock = () => {
   const dispatch = useDispatch();
   const { activeTodosCount } = useSelector(filteredTodosAndCountSelector);
   const todoListCount = useSelector(({ todo }) => todo.todoList.length);
+  const todoFilter = useSelector(({ todo }) => todo.todoFilter);
 
   if (!todoListCount) {
     return null;
@@ -27,6 +29,9 @@ const FilterBlock = () => {
           <Button
             key={filter}
             onClick={() => dispatch(todoActions.setFilter(filter))}
+            className={classnames({
+              'filter-button--active': filter === todoFilter,
+            })}
           >
             {filter}
           </Button>

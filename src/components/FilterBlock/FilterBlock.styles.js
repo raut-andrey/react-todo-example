@@ -15,6 +15,11 @@ export default styled.footer`
     justify-content: center;
   }
 
+  .filter-button--active {
+    background-color: #003a00;
+    box-shadow: 0 0 0 1px green;
+  }
+
   @media (max-width: 600px) {
     flex-wrap: wrap;
 
